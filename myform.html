@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Tristanto Rachmadi Wibowo- 05211942000007</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .label {float: left; width: 150px; }
+            .infobox {width: 200px; }
+            .error { color: red; padding-left: 10px; }
+            .submit { margin-left: 150px; margin-top: 10px;}
+        </style>
+    </head>
+    <body>
+        
+        <form id="signup" method="post" action="">
+            <div>
+                <span class="label">Enter Institution Email Id </span>
+                <input type="text" class="infobox"name="email" /> 
+           <span class="error"> Invalid Email Address. Correct email address is the one
+           that essentially has an @ sign and a . (period) after @ sign. It should not have any other
+           special symbol except hyphen or underscore and must be terminated by any letter only
+           </span>
+        </div>
+        <script>$(document).ready(function() { //The ready event occurs when the email has been loaded.
+            $('.error').hide(); // when error occur will hide the selected element 
+            $('.submit').click(function(event){ //occur when email clicked in this case if the email submit
+            var data=$('.infobox').val();// return value attribute on infobox
+            if(valid_email(data))// If the email address is correctly entered that contains @ and . (period), it will be accepted without any error message displayed
+            {
+            $('.error').hide();// when error occur will hide the selected element in this case the email
+            }
+            else
+            {
+            $('.error').show();// show the error message
+            event.preventDefault();// cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+            }
+            });
+           });
+           function valid_email(email)
+           {
+            var pattern= new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
+            return pattern.test(email);//will test the match string whether is true or false
+           } 
+        </script>
+           <input class="submit" type="submit" value="Submit">
+        </form>
+    </body>
+</html>
